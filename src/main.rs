@@ -1,12 +1,9 @@
-use ferris_says::say;
-// from the previous step
-use std::io::{stdout, BufWriter};
+use std::io;
 
 fn main() {
-    let stdout = stdout();
-    let message = String::from("Hello fellow Rustaceans!");
-    let width = message.chars().count();
-
-    let mut writer = BufWriter::new(stdout.lock());
-    say(&message, width, &mut writer).unwrap();
+    println!("{}", "猜数游戏！");
+    println!("猜测一个游戏");
+    let mut guess = String::new();
+    io::stdin().read_line(&mut guess).expect("无法读取行");
+    println!("你猜测测的数是：{}", guess);
 }
