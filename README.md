@@ -1,7 +1,23 @@
+# Rust
+
+## 系统环境配置
+
+- `vim /etc/profile` 追加
+
+```shell
+export CARGO_HOME=$HOME/.cargo
+export RUSTUP_HOME=$HOME/.rustup
+export RUSTUP_DIST_SERVER=http://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=http://mirrors.ustc.edu.cn/rust-static/rustup
+export PATH="$HOME/.cargo/bin:$PATH"
+```
+
 ## 配置源
+
 - `cd ～.cargo`
 - `touch config`
 - vim config
+
     ```toml
     [source.crates-io]
     replace-with = 'rsproxy-sparse'
@@ -14,7 +30,9 @@
     [net]
     git-fetch-with-cli = true
     ```
+
 ## 基本命令
+
 - rustc
   - `rustc --version`
   - `rustup update stable`
