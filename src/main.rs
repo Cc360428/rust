@@ -1,35 +1,41 @@
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
-
+// #[derive(Debug)]
+enum Element {
+    Integer(i32),
+    Int(i32),
+    Float(f64),
+    Text(String),
+}
 fn main() {
-    println!("Guess the number!");
+    let mut v_new: Vec<Element> = Vec::new();
+    v_new.push(Element::Integer(10));
+    v_new.push(Element::Int(100));
+    v_new.push(Element::Float(10.11));
+    v_new.push(Element::Text(String::from("Super")));
 
-    let secret_number = rand::thread_rng().gen_range(1..=100);
-
-    loop {
-        println!("Please input your guess.");
-
-        let mut guess = String::new();
-
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        println!("You guessed: {guess}");
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            }
+    for element in &v_new {
+        match element {
+            Element::Integer(value) => println!("{}", value),
+            Element::Int(value) => println!("{}", value),
+            Element::Float(value) => println!("{}", value),
+            Element::Text(value) => println!("{}", value),
         }
     }
+
+    // println!("{:?}", v_new);
+    let v_t = vec![
+        Element::Integer(1),
+        Element::Int(100),
+        Element::Float(10.11),
+        Element::Text(String::from("Super")),
+    ];
+
+    for element in &v_t {
+        match element {
+            Element::Integer(value) => println!("{}", value),
+            Element::Int(value) => println!("{}", value),
+            Element::Float(value) => println!("{}", value),
+            Element::Text(value) => println!("{}", value),
+        }
+    }
+    // println!("{:?}", v_t)
 }
